@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      input[type='submit']:hover {
+        background-color: #80c248;
+      }
+
+      input[type='button'] {
+        padding: 10px 25px 8px; 
+        color: #fff; 
+        background-color: #78b941;
+        text-shadow: rgba(0,0,0,0.24) 0 1px 0; 
+        font-size: 16px; 
+        box-shadow: rgba(255,255,255,0.24) 0 2px 0 0 inset,#fff 0 1px 0 0;
+        border: 1px solid #6faf38; 
+        border-radius: 2px;
+        margin-top: 10px; 
+        cursor:pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas id="canvas" width="978" height="570" align="center"></canvas>
+    <script>
+      function circle() {
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var centerX = document.getElementById("centerX").value / 2;
+        var centerY = document.getElementById("centerY").value / 2;
+        var radius = document.getElementById("radius").value;
+
+        var red = document.getElementById("red_circle").value;
+        var green = document.getElementById("green_circle").value;
+        var blue = document.getElementById("blue_circle").value;
+
+        context.beginPath();
+        context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+        context.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
+        context.fill();
+        context.lineWidth = 10;
+        context.strokeStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
+        context.stroke();
+        document.getElementById("radius").innerHTML;
+      }
+
+      function rect() {
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var x = document.getElementById("x").value ;
+        var y = document.getElementById("y").value ;
+
+        var r = document.getElementById("red_rect").value;
+        var g = document.getElementById("green_rect").value;
+        var b = document.getElementById("blue_rect").value;
+
+        context.clearRect(0,0,x,y);
+        context.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
+        context.fillRect(40,40,x,y);
+
+        context.lineWidth = 10;
+        context.strokeStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
+        context.stroke();
+      }
+    </script>
+    <br>
+    <aside align="center">
+      <b>Circle : </b><br>
+      Width: <input type="text" id="centerX"/><br>
+      Height: <input type="text" id="centerY"/><br>
+      Radius: <input type="text" id="radius"/><br>
+
+      Color Change: <br>
+      <input id="red_circle" name="red_circle" type="range" min="0" max="255" step="1" value="128" onchange="circle()"></input>
+      <label for="red_circle">Red</label><br>
+
+      <input id="green_circle" name="green_circle" type="range" min="0" max="255" step="1" value="128" onchange="circle()"></input>
+      <label for="green_circle">Green</label>
+      <br>
+      <input id="blue_circle" name="blue_circle" type="range" min="0" max="255" step="1" value="128" onchange="circle()"></input>
+      <label for="blue_circle">Blue</label><br>
+      <input type="button" onclick="circle()" value="Circle"/><br><br>
+      </aside>
+
+      <aside align="center">
+      <b> Rectangle :</b> <br>
+      Width: <input type="text" id="x"/><br>
+
+      Height: <input type="text" id="y"/><br>
+      Color Change: <br>
+
+
+      <input id="red_rect" name="red_rect" type="range" min="0" max="255" step="1" value="128" onchange="rect()"></input>
+      <label for="red_rect">Red</label><br>
+
+      <input id="green_rect" name="green_rect" type="range" min="0" max="255" step="1" value="128" onchange="rect()"></input>
+      <label for="green_rect">Green</label>
+      <br>
+      <input id="blue_rect" name="blue_rect" type="range" min="0" max="255" step="1" value="128" onchange="rect()"></input>
+      <label for="blue_rect">Blue</label><br>
+
+
+
+
+      <input type="button" onclick="rect()" value="Rectangle"/>
+
+    </aside>
+
+
+</body>
+</html> 
